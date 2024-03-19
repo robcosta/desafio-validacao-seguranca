@@ -30,7 +30,7 @@ public class CityController {
 	}
 	
 	
-	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_CLIENT')")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	@PostMapping
 	public ResponseEntity<CityDTO> insert(@RequestBody CityDTO dto) {
 		dto = service.insert(dto);

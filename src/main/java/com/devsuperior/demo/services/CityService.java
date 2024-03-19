@@ -1,5 +1,6 @@
 package com.devsuperior.demo.services;
 
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,8 @@ public class CityService {
 	@Transactional(readOnly = true)
 	public List<CityDTO> findAll() {
 		List<City> list = repository.findAll();
-		return list.stream().map(x -> new CityDTO(x)).toList();
+		List<City> sortedList = list.stream().sorted(Comparator.comparing(City::getName)).toList();
+		return sortedList.stream().map(x -> new CityDTO(x)).toList();
 	}
 	
 	@Transactional

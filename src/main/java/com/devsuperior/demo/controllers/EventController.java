@@ -30,7 +30,7 @@ public class EventController {
 		return ResponseEntity.ok().body(list);
 	}
 	
-	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_CLIENT')")
 	@PostMapping
 	public ResponseEntity<EventDTO> insert(@RequestBody EventDTO dto) {
 		dto = service.insert(dto);
